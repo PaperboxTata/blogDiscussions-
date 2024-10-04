@@ -1,101 +1,59 @@
-import Image from "next/image";
+"use server"
+import dynamic from 'next/dynamic'
+import avatar from '@/pubic/avatar.jpg'
+import { PersonalLinks } from "@/components/ts/PageConfig"
+import Link from 'next/link';
+import { ChevronDown_svgD } from '@/components/ts/icon_svgD';
+export default async function Page() {
+  const PageContainer = dynamic(() => import('@/components/home/PageContainer'))
+  const PageCover = dynamic(() => import('@/components/home/PageCover'))
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const personalLinkItems = PersonalLinks.map((item) =>
+    <div key={item.name} className='transition hover:scale-110 mx-2 ring-offset-2 ring-black ring-1 rounded-full'>
+      <Link href={item.path} target='_blank'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox={item.viewBox}>
+          <path strokeLinecap="round" strokeLinejoin="round" d={item.icon_svgD} />
+        </svg>
+      </Link>
     </div>
+  );
+  return (
+    <>
+      <div className="page-height flex flex-col justify-between max-lg:h-screen">
+        <div></div>
+        <div className="flex flex-col w-full items-start px-32 max-lg:px-2">
+          <div className="flex flex-row max-lg:justify-center">
+            <div className='basis-1/2'>
+              <img className='rounded-full' src={avatar.src} alt="" />
+            </div>
+          </div>
+          <div className="flex flex-col justify-center pt-8 text-4xl max-lg:text-xl font-thin leading-relaxed text-justify">
+            <div>Hi,I'm Pabota.🍀</div>
+            <div className='flex flex-row pt-1'>
+              <p><span>A</span> <span className='line-through'>Noob</span> <span>NodeJS</span> </p>
+              <div className='flex items-center font-medium text-2xl ml-4 max-lg:ml-2 max-lg:text-base hover:bg-slate-200'>
+                <div>
+                  <span>{'<'}</span>
+                  Developer
+                  <span>{' />'}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='text-xs font-thin pt-1'>Studying / Practicing</div>
+          <div className='flex flex-row pt-5'>
+            {personalLinkItems}
+          </div>
+        </div>
+        <div className='flex justify-center'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 animate-bounce">
+            <path strokeLinecap="round" strokeLinejoin="round" d={ChevronDown_svgD} />
+          </svg>
+        </div>
+      </div>
+      <PageCover>
+        <PageContainer />
+      </PageCover>
+    </>
   );
 }

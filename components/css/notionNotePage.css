@@ -1,0 +1,69 @@
+.notion>* {
+    padding: 0;
+}
+
+.notion-header {
+    display: none;
+}
+
+.notion-app {
+    min-height: auto;
+}
+
+.notion-page {
+    @apply w-full max-lg:w-full;
+}
+
+.notion-page-cover-wrapper {
+    display: none;
+}
+
+.notion-page-no-cover {
+    padding-top: 0;
+    margin-top: 0 !important;
+}
+
+.notion-page-has-cover.notion-page-has-icon.notion-page-has-text-icon {
+    padding-top: 0;
+}
+
+.notion-page-scroller {
+    min-height: auto;
+    width: 100%;
+
+    main {
+        .notion-title {
+            display: none;
+        }
+
+        .notion-page-icon-hero {
+            display: none;
+        }
+
+        .notion-collection-page-properties {
+            display: none;
+        }
+
+        .notion-page-content ::selection {
+            @apply bg-yellow-100;
+        }
+
+        @apply px-0 mx-0;
+        padding-bottom: 0;
+    }
+}
+
+/*image*/
+.notion-row {
+    div{
+        width: auto !important;
+    }
+}
+
+.notion-asset-wrapper div {
+    height:auto !important;
+}
+
+.notion-asset-wrapper img {
+    @apply p-1 w-full;
+}
